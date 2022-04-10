@@ -8,6 +8,8 @@
   <%= link_to "New key", new_key_path %>
 </div>
 
+<%= will_paginate @keys %>
+
 <table id="keys">
 
   <tr>
@@ -58,3 +60,5 @@
   <% end %>
 
 </table>
+
+<%= will_paginate @keys %>

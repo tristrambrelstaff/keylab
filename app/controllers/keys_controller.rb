@@ -3,7 +3,7 @@ class KeysController < ApplicationController
 
   # GET /keys or /keys.json
   def index
-    @keys = Key.all
+    @keys = Key.all.paginate(page: params[:page])
   end
 
   # GET /keys/1 or /keys/1.json
