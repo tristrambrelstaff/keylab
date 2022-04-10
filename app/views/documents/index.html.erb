@@ -1,14 +1,70 @@
-<p style="color: green"><%= notice %></p>
+<div style="color: green">
+  <%= notice %>
+</div>
 
 <h1>Documents</h1>
 
-<div id="documents">
-  <% @documents.each do |document| %>
-    <%= render document %>
-    <p>
-      <%= link_to "Show this document", document %>
-    </p>
-  <% end %>
+<div>
+  <%= link_to "New document", new_document_path %>
 </div>
 
-<%= link_to "New document", new_document_path %>
+<table id="documents">
+
+  <tr>
+    <th>Id</th>
+    <th>Ref</th>
+    <th>Citation</th>
+    <th>Language</th>
+    <th>Original</th>
+    <th>Archived</th>
+    <th>Actions</th>
+  </tr>
+
+  <% @documents.each do |document| %>
+
+    <tr>
+
+      <td>
+        <%= document.id %>
+      </td>
+
+      <td>
+        <%= document.ref %>
+      </td>
+
+      <td>
+        <%= document.citation %>
+      </td>
+
+      <td>
+        <%= document.language %>
+      </td>
+
+      <td>
+        <div>
+          <%= link_to "File", document.original_file_url %>
+        </div>
+        <div>
+          <%= link_to "Page", document.original_page_url %>
+        </div>
+      </td>
+
+      <td>
+        <div>
+          <%= link_to "File", document.archived_file_url %>
+        </div>
+        <div>
+          <%= link_to "Page", document.archived_page_url %>
+        </div>
+      </td>
+
+      <td>
+        <%= link_to "Show", document %>
+        <%= link_to "Edit", document %>
+      </td>
+
+    </tr>
+
+  <% end %>
+
+</table>

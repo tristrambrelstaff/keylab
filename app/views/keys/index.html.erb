@@ -1,14 +1,60 @@
-<p style="color: green"><%= notice %></p>
+<div style="color: green">
+  <%= notice %>
+</div>
 
 <h1>Keys</h1>
 
-<div id="keys">
-  <% @keys.each do |key| %>
-    <%= render key %>
-    <p>
-      <%= link_to "Show this key", key %>
-    </p>
-  <% end %>
+<div>
+  <%= link_to "New key", new_key_path %>
 </div>
 
-<%= link_to "New key", new_key_path %>
+<table id="keys">
+
+  <tr>
+    <th>Id</th>
+    <th>Ref</th>
+    <th>Document Id</th>
+    <th>Title</th>
+    <th>Language</th>
+    <th>Notes</th>
+    <th>Actions</th>
+  </tr>
+
+  <% @keys.each do |key| %>
+
+    <tr>
+
+      <td>
+        <%= key.id %>
+      </td>
+
+      <td>
+        <%= key.ref %>
+      </td>
+
+      <td>
+        <%= key.document_id %>
+      </td>
+
+      <td>
+        <%= key.title %>
+      </td>
+
+      <td>
+        <%= key.language %>
+      </td>
+
+      <td>
+        <%= key.notes %>
+      </td>
+
+      <td>
+        <%= link_to "Show", key %>
+        <%= link_to "Edit", key %>
+      </td>
+
+    </tr>
+
+  <% end %>
+
+</table>
