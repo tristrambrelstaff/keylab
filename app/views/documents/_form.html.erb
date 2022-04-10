@@ -1,0 +1,52 @@
+<%= form_with(model: document) do |form| %>
+  <% if document.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(document.errors.count, "error") %> prohibited this document from being saved:</h2>
+
+      <ul>
+        <% document.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :ref, style: "display: block" %>
+    <%= form.text_field :ref %>
+  </div>
+
+  <div>
+    <%= form.label :citation, style: "display: block" %>
+    <%= form.text_area :citation %>
+  </div>
+
+  <div>
+    <%= form.label :language, style: "display: block" %>
+    <%= form.text_field :language %>
+  </div>
+
+  <div>
+    <%= form.label :original_file_url, style: "display: block" %>
+    <%= form.text_area :original_file_url %>
+  </div>
+
+  <div>
+    <%= form.label :archived_file_url, style: "display: block" %>
+    <%= form.text_area :archived_file_url %>
+  </div>
+
+  <div>
+    <%= form.label :original_page_url, style: "display: block" %>
+    <%= form.text_area :original_page_url %>
+  </div>
+
+  <div>
+    <%= form.label :archived_page_url, style: "display: block" %>
+    <%= form.text_area :archived_page_url %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

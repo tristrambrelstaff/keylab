@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ref: MyString
+  citation: MyText
+  language: MyString
+  original_file_url: MyText
+  archived_file_url: MyText
+  original_page_url: MyText
+  archived_page_url: MyText
+
+two:
+  ref: MyString
+  citation: MyText
+  language: MyString
+  original_file_url: MyText
+  archived_file_url: MyText
+  original_page_url: MyText
+  archived_page_url: MyText
