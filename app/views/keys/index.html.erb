@@ -15,7 +15,7 @@
   <tr>
     <th>Id</th>
     <th>Ref</th>
-    <th>Document Id</th>
+    <th>Document</th>
     <th>Title</th>
     <th>Language</th>
     <th>Notes</th>
@@ -35,7 +35,7 @@
       </td>
 
       <td>
-        <%= key.document_id %>
+        <%= link_to key.document.ref, key.document %>
       </td>
 
       <td>

@@ -19,6 +19,7 @@
     <th>Language</th>
     <th>Original</th>
     <th>Archived</th>
+    <th>Keys</th>
     <th>Actions</th>
   </tr>
 
@@ -58,6 +59,14 @@
         <div>
           <%= link_to "Page", document.archived_page_url %>
         </div>
+      </td>
+
+      <td>
+        <% document.keys.each do |key| %>
+          <div>
+            <%= link_to "#{key.ref} (#{key.language})", key %>
+          </div>
+        <% end %>
       </td>
 
       <td>

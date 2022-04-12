@@ -18,7 +18,7 @@
 
   <div>
     <%= form.label :document_id, style: "display: block" %>
-    <%= form.number_field :document_id %>
+    <%= form.select :document_id, options_for_select(Document.ref_id_pairs), :prompt => true %>
   </div>
 
   <div>

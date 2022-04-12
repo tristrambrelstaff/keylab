@@ -34,4 +34,13 @@
     <%= link_to document.archived_page_url, document.archived_page_url %>
   </p>
 
+  <p>
+    <strong>Keys:</strong>
+    <% document.keys.each do |key| %>
+      <div>
+        <%= link_to "#{key.ref} (#{key.language})", key %>
+      </div>
+    <% end %>
+  </p>
+
 </div>
