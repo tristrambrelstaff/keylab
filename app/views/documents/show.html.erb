@@ -6,5 +6,5 @@
   <%= link_to "Edit this document", edit_document_path(@document) %> |
   <%= link_to "Back to documents", documents_path %>
 
-  <%= button_to "Destroy this document", @document, method: :delete %>
+  <%= button_to "Destroy this document", document_path(@document), method: :delete %>
 </div>

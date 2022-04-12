@@ -38,7 +38,7 @@
     <strong>Keys:</strong>
     <% document.keys.each do |key| %>
       <div>
-        <%= link_to "#{key.ref} (#{key.language})", key %>
+        <%= link_to "#{key.ref} (#{key.language})", key_path(key) %>
       </div>
     <% end %>
   </p>

@@ -35,7 +35,7 @@
       </td>
 
       <td>
-        <%= link_to key.document.ref, key.document %>
+        <%= link_to key.document.ref, document_path(key.document) %>
       </td>
 
       <td>
@@ -51,8 +51,8 @@
       </td>
 
       <td>
-        <%= link_to "Show", key %>
-        <%= link_to "Edit", key %>
+        <%= link_to "Show", key_path(key) %>
+        <%= link_to "Edit", edit_key_path(key) %>
       </td>
 
     </tr>

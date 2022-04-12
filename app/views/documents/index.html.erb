@@ -64,14 +64,14 @@
       <td>
         <% document.keys.each do |key| %>
           <div>
-            <%= link_to "#{key.ref} (#{key.language})", key %>
+            <%= link_to "#{key.ref} (#{key.language})", key_path(key) %>
           </div>
         <% end %>
       </td>
 
       <td>
-        <%= link_to "Show", document %>
-        <%= link_to "Edit", document %>
+        <%= link_to "Show", document_path(document) %>
+        <%= link_to "Edit", edit_document_path(document) %>
       </td>
 
     </tr>
