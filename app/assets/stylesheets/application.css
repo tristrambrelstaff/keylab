@@ -35,3 +35,19 @@ td {
   text-align: left;
   vertical-align: top;
 }
+
+form.search {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid gray;
+}
+
+form.search .field {
+  float: left;
+  margin: 5px;
+}
+
+form.search .submit-field {
+  clear: both;
+  margin: 5px
+}

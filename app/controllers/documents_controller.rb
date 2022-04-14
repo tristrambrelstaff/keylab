@@ -3,7 +3,15 @@ class DocumentsController < ApplicationController
 
   # GET /documents or /documents.json
   def index
-    @documents = Document.all.paginate(page: params[:page])
+    searcher = Document.searcher(params)
+    @documents = Document.
+      joins(searcher.joins.join(" ")).
+      where([searcher.conds.join(" AND "), *searcher.vals]).
+      paginate(page: params[:page])
+  end
+
+  # GET /documents/search
+  def search
   end
 
   # GET /documents/1 or /documents/1.json
