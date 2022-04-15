@@ -16,6 +16,36 @@
     %>
   </div>
 
+  <div class="field">
+    Ref
+    <%= text_field_tag(
+          :ref,
+          {},
+          value: params[:ref]
+        )
+    %>
+  </div>
+
+  <div class="field">
+    Citation
+    <%= text_field_tag(
+          :citation,
+          {},
+          value: params[:citation]
+        )
+    %>
+  </div>
+
+  <div class="field">
+    Language
+    <%= text_field_tag(
+          :language,
+          {},
+          value: params[:language]
+        )
+    %>
+  </div>
+
   <div class="submit-field">
     <%= submit_tag "Search", class: "btn btn-primary" %>
     <%= link_to "Clear", search_documents_path %>

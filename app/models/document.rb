@@ -18,6 +18,18 @@ class Document < ApplicationRecord
       conds << "documents.id = ?"
       vals << params[:id]
     end
+    unless params[:ref].blank?
+      conds << "documents.ref LIKE ?"
+      vals << "%#{params[:ref]}%"
+    end
+    unless params[:citation].blank?
+      conds << "documents.citation LIKE ?"
+      vals << "%#{params[:citation]}%"
+    end
+    unless params[:language].blank?
+      conds << "documents.language = ?"
+      vals << params[:language]
+    end
     OpenStruct.new(
       :joins => joins.uniq,
       :conds => sqlite_fix(conds),

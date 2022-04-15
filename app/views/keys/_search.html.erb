@@ -16,6 +16,67 @@
     %>
   </div>
 
+  <div class="field">
+    Ref
+    <%= text_field_tag(
+          :ref,
+          {},
+          value: params[:ref]
+        )
+    %>
+  </div>
+
+  <div class="field">
+    Document Ref
+    <%= text_field_tag(
+          :document_ref,
+          {},
+          value: params[:document_ref]
+        )
+    %>
+  </div>
+
+  <div class="field">
+    Document Id
+    <%= text_field_tag(
+          :document_id,
+          {},
+          value: params[:document_id],
+          size: 5
+        )
+    %>
+  </div>
+
+  <div class="field">
+    Title
+    <%= text_field_tag(
+          :title,
+          {},
+          value: params[:title]
+        )
+    %>
+  </div>
+
+  <div class="field">
+    Language
+    <%= text_field_tag(
+          :language,
+          {},
+          value: params[:language]
+        )
+    %>
+  </div>
+
+  <div class="field">
+    Notes
+    <%= text_field_tag(
+          :notes,
+          {},
+          value: params[:notes]
+        )
+    %>
+  </div>
+
   <div class="submit-field">
     <%= submit_tag "Search", class: "btn btn-primary" %>
     <%= link_to "Clear", search_keys_path %>
