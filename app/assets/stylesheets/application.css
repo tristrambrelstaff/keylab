@@ -14,6 +14,13 @@
  *= require_self
  */
 
+.alert {
+  color: red;
+}
+
+.notice {
+  color: green;
+}
 
 table {
   border-collapse: collapse;
