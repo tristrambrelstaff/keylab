@@ -1,5 +1,4 @@
 class KeysController < ApplicationController
-  before_action :set_key, only: %i[ show edit update destroy ]
 
   # GET /keys or /keys.json
   def index
@@ -16,6 +15,7 @@ class KeysController < ApplicationController
 
   # GET /keys/1 or /keys/1.json
   def show
+    @key = Key.find(params[:id])
   end
 
   # GET /keys/new
@@ -25,12 +25,12 @@ class KeysController < ApplicationController
 
   # GET /keys/1/edit
   def edit
+    @key = Key.find(params[:id])
   end
 
   # POST /keys or /keys.json
   def create
     @key = Key.new(key_params)
-
     respond_to do |format|
       if @key.save
         format.html { redirect_to key_url(@key), notice: "Key was successfully created." }
@@ -44,6 +44,7 @@ class KeysController < ApplicationController
 
   # PATCH/PUT /keys/1 or /keys/1.json
   def update
+    @key = Key.find(params[:id])
     respond_to do |format|
       if @key.update(key_params)
         format.html { redirect_to key_url(@key), notice: "Key was successfully updated." }
@@ -57,8 +58,8 @@ class KeysController < ApplicationController
 
   # DELETE /keys/1 or /keys/1.json
   def destroy
+    @key = Key.find(params[:id])
     @key.destroy
-
     respond_to do |format|
       format.html { redirect_to keys_url, notice: "Key was successfully destroyed." }
       format.json { head :no_content }
@@ -66,13 +67,10 @@ class KeysController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_key
-      @key = Key.find(params[:id])
-    end
 
     # Only allow a list of trusted parameters through.
     def key_params
       params.require(:key).permit(:ref, :document_id, :title, :language, :notes)
     end
+
 end

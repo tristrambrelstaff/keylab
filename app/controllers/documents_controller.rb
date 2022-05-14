@@ -1,5 +1,4 @@
 class DocumentsController < ApplicationController
-  before_action :set_document, only: %i[ show edit update destroy ]
 
   # GET /documents or /documents.json
   def index
@@ -16,6 +15,7 @@ class DocumentsController < ApplicationController
 
   # GET /documents/1 or /documents/1.json
   def show
+    @document = Document.find(params[:id])
   end
 
   # GET /documents/new
@@ -25,12 +25,12 @@ class DocumentsController < ApplicationController
 
   # GET /documents/1/edit
   def edit
+    @document = Document.find(params[:id])
   end
 
   # POST /documents or /documents.json
   def create
     @document = Document.new(document_params)
-
     respond_to do |format|
       if @document.save
         format.html { redirect_to document_url(@document), notice: "Document was successfully created." }
@@ -44,6 +44,7 @@ class DocumentsController < ApplicationController
 
   # PATCH/PUT /documents/1 or /documents/1.json
   def update
+    @document = Document.find(params[:id])
     respond_to do |format|
       if @document.update(document_params)
         format.html { redirect_to document_url(@document), notice: "Document was successfully updated." }
@@ -57,8 +58,8 @@ class DocumentsController < ApplicationController
 
   # DELETE /documents/1 or /documents/1.json
   def destroy
+    @document = Document.find(params[:id])
     @document.destroy
-
     respond_to do |format|
       format.html { redirect_to documents_url, notice: "Document was successfully destroyed." }
       format.json { head :no_content }
@@ -66,13 +67,10 @@ class DocumentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_document
-      @document = Document.find(params[:id])
-    end
 
     # Only allow a list of trusted parameters through.
     def document_params
       params.require(:document).permit(:ref, :citation, :language, :original_file_url, :archived_file_url, :original_page_url, :archived_page_url)
     end
+
 end
