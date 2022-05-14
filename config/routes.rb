@@ -16,6 +16,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
 
-  root "keys#index"
+  root "site#home"
 
 end
