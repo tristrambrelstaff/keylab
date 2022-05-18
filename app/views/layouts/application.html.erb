@@ -14,9 +14,31 @@
 
   <body>
     <div>
-      <%= link_to image_tag("Keypad-logo.png"), root_path %>
-      <%= link_to "Documents", documents_path %> | <%= link_to "Keys", keys_path %>
+      <div class="float-left">
+        <%= link_to image_tag("Keypad-logo.png"), root_path %>
+      </div>
+      <% if admin_signed_in? %>
+        <% # Need to prevent the form created by button_to from forcing a new line: %>
+        <div class="float-right">
+          <%= button_to "Log out", destroy_admin_session_path, method: :delete %>
+        </div>
+        <div class="float-right">
+          Logged in as <strong><%= current_admin.email %></strong> |&nbsp;
+        </div>
+        <div class="float-right clear-right">
+          <%= link_to 'Account Settings', edit_admin_registration_path %>
+        </div>
+      <% else %>
+        <div class="float-right">
+          <%= link_to "Sign up", new_admin_registration_path %> |
+          <%= link_to "Log in", new_admin_session_path %>
+        </div>
+      <% end %>
     </div>
+    <div class="clear-both">
+      <%= link_to "Documents!", documents_path %> | <%= link_to "Keys", keys_path %>
+    </div>
+
     <div class="alert">
       <%= alert %>
     </div>
