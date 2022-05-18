@@ -2,9 +2,11 @@
 
 <%= render partial: "search" %>
 
-<div>
-  <%= link_to "New key", new_key_path %>
-</div>
+<% if admin_signed_in? %>
+  <div>
+    <%= link_to "New key", new_key_path %>
+  </div>
+<% end %>
 
 <%= will_paginate @keys %>
 
@@ -50,7 +52,11 @@
 
       <td>
         <%= link_to "Show", key_path(key) %>
-        <%= link_to "Edit", edit_key_path(key) %>
+        <%= link_to(
+              "Edit",
+              edit_key_path(key)
+            ) if admin_signed_in?
+        %>
       </td>
 
     </tr>

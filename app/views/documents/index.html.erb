@@ -2,9 +2,11 @@
 
 <%= render partial: "search" %>
 
-<div>
-  <%= link_to "New document", new_document_path %>
-</div>
+<% if admin_signed_in? %>
+  <div>
+    <%= link_to "New document", new_document_path %>
+  </div>
+<% end %>
 
 <%= will_paginate @documents %>
 
@@ -69,7 +71,11 @@
 
       <td>
         <%= link_to "Show", document_path(document) %>
-        <%= link_to "Edit", edit_document_path(document) %>
+        <%= link_to(
+              "Edit",
+              edit_document_path(document)
+            ) if admin_signed_in?
+        %>
       </td>
 
     </tr>

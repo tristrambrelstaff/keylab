@@ -1,8 +1,17 @@
 <%= render @key %>
 
 <div>
-  <%= link_to "Edit this key", edit_key_path(@key)%> |
+  <%= link_to(
+       "Edit this key",
+       edit_key_path(@key)
+      ) if admin_signed_in?
+  %> |
   <%= link_to "Back to keys", keys_path %>
 
-  <%= button_to "Destroy this key", key_path(@key), method: :delete, form: {data: {turbo_confirm: "Are you sure?"}} %>
+  <%= button_to(
+        "Destroy this key",
+        key_path(@key),
+        method: :delete, form: {data: {turbo_confirm: "Are you sure?"}}
+      ) if admin_signed_in?
+  %>
 </div>

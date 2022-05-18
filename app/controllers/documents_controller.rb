@@ -1,5 +1,7 @@
 class DocumentsController < ApplicationController
 
+  before_action :authenticate_admin!, :only => [:create, :update, :destroy]
+
   # GET /documents or /documents.json
   def index
     searcher = Document.searcher(params)

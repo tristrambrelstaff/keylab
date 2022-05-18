@@ -1,5 +1,7 @@
 class KeysController < ApplicationController
 
+  before_action :authenticate_admin!, :only => [:create, :update, :destroy]
+
   # GET /keys or /keys.json
   def index
     searcher = Key.searcher(params)
