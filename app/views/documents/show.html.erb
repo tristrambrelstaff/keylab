@@ -5,8 +5,7 @@
         "Edit this document",
         edit_document_path(@document)
       ) if admin_signed_in?
-  %> |
-  <%= link_to "Back to documents", documents_path %>
+  %>
 
   <%= button_to(
         "Destroy this document",
