@@ -1,6 +1,6 @@
 class Key < ApplicationRecord
 
-  require "sqlite_fix"
+  require "empty_where_fix"
 
   belongs_to :document
 
@@ -39,7 +39,7 @@ class Key < ApplicationRecord
     end
     OpenStruct.new(
       :joins => joins.uniq,
-      :conds => sqlite_fix(conds),
+      :conds => empty_where_fix(conds),
       :vals => vals
     )
   end
