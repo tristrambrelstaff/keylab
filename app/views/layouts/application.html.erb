@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Keypad</title>
+    <title><%= Site.name %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= favicon_link_tag "favicon.ico", rel: "icon", type: "image/vnd.microsoft.icon" %>
-    <%= favicon_link_tag "apple-touch-icon.png", rel: "apple-touch-icon", type: "image/png"%>
+    <%= favicon_link_tag Site.favicon_path, rel: "icon", type: "image/vnd.microsoft.icon" %>
+    <%= favicon_link_tag Site.apple_touch_icon_path, rel: "apple-touch-icon", type: "image/png"%>
 
     <%= stylesheet_link_tag "application" %>
     <%= javascript_importmap_tags %>
@@ -15,7 +15,7 @@
   <body>
     <div>
       <div class="float-left">
-        <%= link_to image_tag("Keypad-logo.png"), root_path %>
+        <%= link_to image_tag(Site.logo_path), root_path %>
       </div>
       <% if admin_signed_in? %>
         <% # Need to prevent the form created by button_to from forcing a new line: %>
