@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_18_091247) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_09_184500) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,25 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_18_091247) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "conclusions", force: :cascade do |t|
+    t.string "type"
+    t.text "text"
+    t.text "notes"
+    t.integer "conclusion_id"
+    t.integer "other_conclusion_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "couplets", force: :cascade do |t|
+    t.string "ref"
+    t.integer "key_id"
+    t.string "else_ref"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "documents", force: :cascade do |t|
@@ -44,6 +63,25 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_18_091247) do
     t.text "title"
     t.string "language"
     t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "leads", force: :cascade do |t|
+    t.integer "couplet_id"
+    t.string "then_ref"
+    t.integer "observation_id"
+    t.integer "conclusion_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "observations", force: :cascade do |t|
+    t.string "type"
+    t.text "text"
+    t.text "notes"
+    t.integer "observation_id"
+    t.integer "other_observation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
