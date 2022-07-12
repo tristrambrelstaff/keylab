@@ -1,0 +1,25 @@
+<%= form_with(model: conclusion) do |form| %>
+
+  <% if conclusion.errors.any? %>
+
+    <div style="color: red">
+      <h2><%= pluralize(conclusion.errors.count, "error") %> prohibited this conclusion from being saved:</h2>
+      <ul>
+        <% conclusion.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+
+  <% end %>
+
+  <div>
+    <%= form.label :conclusion_type, style: "display: block" %>
+    <%= form.text_field :conclusion_type %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+
+<% end %>

@@ -1,0 +1,24 @@
+<%= form_tag(
+      conclusions_path,
+      method: :get,
+      class: "search"
+    ) do
+%>
+
+  <div class="field">
+    Id
+    <%= text_field_tag(
+          :id,
+          {},
+          value: params[:id],
+          size: 5
+        )
+    %>
+  </div>
+
+  <div class="submit-field">
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+    <%= link_to "Clear", search_conclusions_path %>
+  </div>
+
+<% end %>

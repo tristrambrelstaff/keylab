@@ -1,0 +1,48 @@
+<h1>Leads</h1>
+
+<%= render partial: "search" %>
+
+<% if admin_signed_in? %>
+  <div>
+    <%= link_to "New lead", new_lead_path %>
+  </div>
+<% end %>
+
+<%= will_paginate @leads %>
+
+<table id="leads">
+
+  <tr>
+    <th>Id</th>
+    <th>Couplet Id</th>
+    <th>Actions</th>
+  </tr>
+
+  <% @leads.each do |lead| %>
+
+    <tr>
+
+      <td>
+        <%= lead.id %>
+      </td>
+
+      <td>
+        <%= lead.couplet_id %>
+      </td>
+
+      <td>
+        <%= link_to "Show", lead_path(lead) %>
+        <%= link_to(
+              "Edit",
+              edit_lead_path(lead)
+            ) if admin_signed_in?
+        %>
+      </td>
+
+    </tr>
+
+  <% end %>
+
+</table>
+
+<%= will_paginate @leads %>

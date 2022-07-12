@@ -1,0 +1,48 @@
+<h1>Couplets</h1>
+
+<%= render partial: "search" %>
+
+<% if admin_signed_in? %>
+  <div>
+    <%= link_to "New couplet", new_couplet_path %>
+  </div>
+<% end %>
+
+<%= will_paginate @couplets %>
+
+<table id="couplets">
+
+  <tr>
+    <th>Id</th>
+    <th>Ref</th>
+    <th>Actions</th>
+  </tr>
+
+  <% @couplets.each do |couplet| %>
+
+    <tr>
+
+      <td>
+        <%= couplet.id %>
+      </td>
+
+      <td>
+        <%= couplet.ref %>
+      </td>
+
+      <td>
+        <%= link_to "Show", couplet_path(couplet) %>
+        <%= link_to(
+              "Edit",
+              edit_couplet_path(couplet)
+            ) if admin_signed_in?
+        %>
+      </td>
+
+    </tr>
+
+  <% end %>
+
+</table>
+
+<%= will_paginate @couplets %>

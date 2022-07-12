@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
+
   devise_for :admins
+
+  resources :documents do
+    collection do
+      get "search"
+    end
+  end
 
   resources :keys do
     collection do
@@ -7,7 +14,25 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :documents do
+  resources :couplets do
+    collection do
+      get "search"
+    end
+  end
+
+  resources :leads do
+    collection do
+      get "search"
+    end
+  end
+
+  resources :observations do
+    collection do
+      get "search"
+    end
+  end
+
+  resources :conclusions do
     collection do
       get "search"
     end

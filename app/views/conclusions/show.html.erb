@@ -1,0 +1,16 @@
+<%= render @conclusion %>
+
+<div>
+  <%= link_to(
+       "Edit this conclusion",
+       edit_conclusion_path(@conclusion)
+      ) if admin_signed_in?
+  %>
+
+  <%= button_to(
+        "Destroy this conclusion",
+        conclusion_path(@conclusion),
+        method: :delete, form: {data: {turbo_confirm: "Are you sure?"}}
+      ) if admin_signed_in?
+  %>
+</div>

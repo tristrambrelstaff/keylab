@@ -1,0 +1,16 @@
+<%= render @lead %>
+
+<div>
+  <%= link_to(
+       "Edit this lead",
+       edit_lead_path(@lead)
+      ) if admin_signed_in?
+  %>
+
+  <%= button_to(
+        "Destroy this lead",
+        lead_path(@lead),
+        method: :delete, form: {data: {turbo_confirm: "Are you sure?"}}
+      ) if admin_signed_in?
+  %>
+</div>
