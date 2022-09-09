@@ -1,0 +1,16 @@
+<%= render @property %>
+
+<div>
+  <%= link_to(
+       "Edit this property",
+       edit_property_path(@property)
+      ) if admin_signed_in?
+  %>
+
+  <%= button_to(
+        "Destroy this property",
+        property_path(@property),
+        method: :delete, form: {data: {turbo_confirm: "Are you sure?"}}
+      ) if admin_signed_in?
+  %>
+</div>

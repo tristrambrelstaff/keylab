@@ -1,0 +1,48 @@
+<h1>Properties</h1>
+
+<%= render partial: "search" %>
+
+<% if admin_signed_in? %>
+  <div>
+    <%= link_to "New property", new_property_path %>
+  </div>
+<% end %>
+
+<%= will_paginate @properties %>
+
+<table id="properties">
+
+  <tr>
+    <th>Id</th>
+    <th>Text</th>
+    <th>Actions</th>
+  </tr>
+
+  <% @properties.each do |property| %>
+
+    <tr>
+
+      <td>
+        <%= property.id %>
+      </td>
+
+      <td>
+        <%= property.text %>
+      </td>
+
+      <td>
+        <%= link_to "Show", property_path(property) %>
+        <%= link_to(
+              "Edit",
+              edit_property_path(property)
+            ) if admin_signed_in?
+        %>
+      </td>
+
+    </tr>
+
+  <% end %>
+
+</table>
+
+<%= will_paginate @properties %>

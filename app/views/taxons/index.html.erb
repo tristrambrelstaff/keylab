@@ -1,0 +1,48 @@
+<h1>Taxons</h1>
+
+<%= render partial: "search" %>
+
+<% if admin_signed_in? %>
+  <div>
+    <%= link_to "New taxon", new_taxon_path %>
+  </div>
+<% end %>
+
+<%= will_paginate @taxons %>
+
+<table id="taxons">
+
+  <tr>
+    <th>Id</th>
+    <th>Text</th>
+    <th>Actions</th>
+  </tr>
+
+  <% @taxons.each do |taxon| %>
+
+    <tr>
+
+      <td>
+        <%= taxon.id %>
+      </td>
+
+      <td>
+        <%= taxon.text %>
+      </td>
+
+      <td>
+        <%= link_to "Show", taxon_path(taxon) %>
+        <%= link_to(
+              "Edit",
+              edit_taxon_path(taxon)
+            ) if admin_signed_in?
+        %>
+      </td>
+
+    </tr>
+
+  <% end %>
+
+</table>
+
+<%= will_paginate @taxons %>
