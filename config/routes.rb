@@ -26,18 +26,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :observations do
-    collection do
-      get "search"
-    end
-  end
-
-  resources :conclusions do
-    collection do
-      get "search"
-    end
-  end
-
   resources :properties do
     collection do
       get "search"

@@ -72,7 +72,7 @@ class LeadsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def lead_params
-      params.require(:lead).permit(:couplet_id, :then_ref, :observation_id, :conclusion_id)
+      params.require(:lead).permit(:couplet_id, :then_ref)
     end
 
 end

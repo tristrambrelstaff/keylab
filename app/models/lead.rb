@@ -22,14 +22,6 @@ class Lead < ApplicationRecord
       conds << "leads.then_ref = ?"
       vals << params[:then_ref]
     end
-    unless params[:observation_id].blank?
-      conds << "leads.observation_id = ?"
-      vals << params[:observation_id]
-    end
-    unless params[:conclusion_id].blank?
-      conds << "leads.conclusion_id = ?"
-      vals << params[:conclusion_id]
-    end
     unless params[:notes].blank?
       conds << "leads.notes LIKE ?"
       vals << "%#{params[:notes]}%"
