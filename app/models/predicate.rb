@@ -30,6 +30,13 @@ class And < Predicate
     "(#{predicate_1.to_s}) AND (#{predicate_2.to_s})"
   end
 
+  def pp(col=0)
+    [ "#{' '*col}AND",
+      predicate_1.pp(col+2),
+      predicate_2.pp(col+2)
+    ].join("\n")
+  end
+
 end
 
 
@@ -41,6 +48,13 @@ class Or < Predicate
 
   def to_s
     "(#{predicate_1.to_s}) OR (#{predicate_2.to_s})"
+  end
+
+  def pp(col=0)
+    [ "#{' '*col}OR",
+      predicate_1.pp(col+2),
+      predicate_2.pp(col+2)
+    ].join("\n")
   end
 
 end
@@ -55,6 +69,12 @@ class Not < Predicate
     "NOT (#{predicate.to_s})"
   end
 
+  def pp(col=0)
+    [ "#{' '*col}NOT",
+      predicate.pp(col+2)
+    ].join("\n")
+  end
+
 end
 
 
@@ -67,6 +87,10 @@ class Has < Predicate
     property.to_s
   end
 
+  def pp(col=0)
+    "#{' '*col}#{property.to_s}"
+  end
+
 end
 
 
@@ -77,6 +101,10 @@ class Is < Predicate
 
   def to_s
     taxon.to_s
+  end
+
+  def pp(col=0)
+    "#{' '*col}#{taxon.to_s}"
   end
 
 end
