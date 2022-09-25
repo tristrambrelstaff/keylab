@@ -2,12 +2,6 @@
 
 <%= render partial: "search" %>
 
-<% if admin_signed_in? %>
-  <div>
-    <%= link_to "New lead", new_lead_path %>
-  </div>
-<% end %>
-
 <%= will_paginate @leads %>
 
 <table id="leads">
@@ -32,11 +26,6 @@
 
       <td>
         <%= link_to "Show", lead_path(lead) %>
-        <%= link_to(
-              "Edit",
-              edit_lead_path(lead)
-            ) if admin_signed_in?
-        %>
       </td>
 
     </tr>

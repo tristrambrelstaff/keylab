@@ -14,13 +14,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :couplets do
+  resources :couplets, :only => [:index, :show] do
     collection do
       get "search"
     end
   end
 
-  resources :leads do
+  resources :leads, :only => [:index, :show] do
     collection do
       get "search"
     end
