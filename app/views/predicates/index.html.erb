@@ -1,0 +1,37 @@
+<h1>Predicates</h1>
+
+<%= render partial: "search" %>
+
+<%= will_paginate @predicates %>
+
+<table id="predicates">
+
+  <tr>
+    <th>Id</th>
+    <th>Pretty Print</th>
+    <th>Actions</th>
+  </tr>
+
+  <% @predicates.each do |predicate| %>
+
+    <tr>
+
+      <td>
+        <%= predicate.id %>
+      </td>
+
+      <td>
+        <pre><%= predicate.pp %></pre>
+      </td>
+
+      <td>
+        <%= link_to "Show", predicate_path(predicate) %>
+      </td>
+
+    </tr>
+
+  <% end %>
+
+</table>
+
+<%= will_paginate @predicates %>

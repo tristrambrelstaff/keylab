@@ -26,6 +26,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :predicates, :only => [:index, :show] do
+    collection do
+      get "search"
+    end
+  end
+
   resources :properties do
     collection do
       get "search"
