@@ -32,13 +32,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :properties do
+  resources :properties, :only => [:index, :show] do
     collection do
       get "search"
     end
   end
 
-  resources :taxons do
+  resources :taxons, :only => [:index, :show] do
     collection do
       get "search"
     end
