@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :keys do
+  resources :keys, :only => [:index, :show] do
     collection do
       get "search"
     end
