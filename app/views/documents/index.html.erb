@@ -71,7 +71,9 @@
 
       <td>
         <%= link_to "Show", document_path(document) %>
-        <%= link_to "Delete", document_path(document, :delete=> 1) %>
+        <% if admin_signed_in? %>
+          <%= link_to "Delete", document_path(document, :delete=> 1) %>
+        <% end %>
       </td>
 
     </tr>
