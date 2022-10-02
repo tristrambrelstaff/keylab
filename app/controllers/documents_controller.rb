@@ -25,11 +25,6 @@ class DocumentsController < ApplicationController
     @document = Document.new
   end
 
-  # GET /documents/1/edit
-  def edit
-    @document = Document.find(params[:id])
-  end
-
   # POST /documents or /documents.json
   def create
     @document = Document.new(document_params)
@@ -39,20 +34,6 @@ class DocumentsController < ApplicationController
         format.json { render :show, status: :created, location: @document }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @document.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /documents/1 or /documents/1.json
-  def update
-    @document = Document.find(params[:id])
-    respond_to do |format|
-      if @document.update(document_params)
-        format.html { redirect_to document_url(@document), notice: "Document was successfully updated." }
-        format.json { render :show, status: :ok, location: @document }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @document.errors, status: :unprocessable_entity }
       end
     end

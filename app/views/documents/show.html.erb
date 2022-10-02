@@ -1,12 +1,6 @@
 <%= render @document %>
 
 <div>
-  <%= link_to(
-        "Edit this document",
-        edit_document_path(@document)
-      ) if admin_signed_in?
-  %>
-
   <%= button_to(
         "Destroy this document",
         document_path(@document),

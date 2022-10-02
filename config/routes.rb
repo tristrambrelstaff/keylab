@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :admins
 
-  resources :documents do
+  resources :documents, :only => [:index, :show, :new, :create, :destroy] do
     collection do
       get "search"
     end
