@@ -15,7 +15,7 @@ class DocumentsController < ApplicationController
   def search
   end
 
-  # GET /documents/1 or /documents/1.json
+  # GET /documents/1?delete=1 or /documents/1.json
   def show
     @document = Document.find(params[:id])
   end

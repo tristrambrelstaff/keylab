@@ -1,10 +1,24 @@
-<%= render @document %>
+<% if params[:delete] == "1" %>
 
-<div>
-  <%= button_to(
-        "Destroy this document",
-        document_path(@document),
-        method: :delete, form: {data: {turbo_confirm: "Are you sure?"}}
-      ) if admin_signed_in?
-  %>
-</div>
+  <h1>Delete this Document?</h1>
+
+  <div>
+    As well as any keys and figures that it contains.
+  </div>
+
+  <%= render @document %>
+
+  <div>
+    <%= button_to(
+          "Delete",
+          document_path(@document),
+          method: :delete
+        ) if admin_signed_in?
+    %>
+  </div>
+
+<% else %>
+
+  <%= render @document %>
+
+<% end %>

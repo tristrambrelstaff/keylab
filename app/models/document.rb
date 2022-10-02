@@ -2,7 +2,7 @@ class Document < ApplicationRecord
 
   require "empty_where_fix"
 
-  has_many :keys
+  has_many :keys, dependent: :destroy
 
   def Document.ref_id_pairs
     Document.all.collect{|document|
