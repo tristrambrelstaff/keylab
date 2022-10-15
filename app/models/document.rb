@@ -4,6 +4,15 @@ class Document < ApplicationRecord
 
   has_many :keys, dependent: :destroy
 
+  before_save :read_from_xml
+
+  def read_from_xml
+    reader = Nokogiri::XML::Reader.from_memory(xml)
+    reader.each do |node|
+      puts "#{node.depth}  #{node.name}:#{node.node_type}"
+    end
+  end
+
   def Document.ref_id_pairs
     Document.all.collect{|document|
       [document.ref, document.id]

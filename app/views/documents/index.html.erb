@@ -20,6 +20,7 @@
     <th>Original</th>
     <th>Archived</th>
     <th>Keys</th>
+    <th>XML</th>
     <th>Actions</th>
   </tr>
 
@@ -67,6 +68,10 @@
             <%= link_to "#{key.ref} (#{key.language})", key_path(key) %>
           </div>
         <% end %>
+      </td>
+
+      <td>
+        <pre><%= document.xml %></pre>
       </td>
 
       <td>

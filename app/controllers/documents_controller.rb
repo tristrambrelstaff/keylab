@@ -53,7 +53,7 @@ class DocumentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def document_params
-      params.require(:document).permit(:ref, :citation, :language, :original_file_url, :archived_file_url, :original_page_url, :archived_page_url)
+      params.require(:document).permit(:xml)
     end
 
 end

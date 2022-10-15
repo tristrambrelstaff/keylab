@@ -43,18 +43,18 @@ td {
   vertical-align: top;
 }
 
-form.search {
+.search {
   margin-top: 10px;
   margin-bottom: 10px;
   border: 1px solid gray;
 }
 
-form.search .field {
+.field {
   float: left;
   margin: 5px;
 }
 
-form.search .submit-field {
+.submit-field {
   clear: both;
   margin: 5px
 }
