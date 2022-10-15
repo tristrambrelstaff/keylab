@@ -2,6 +2,12 @@
 
 <%= render partial: "search" %>
 
+<% if admin_signed_in? %>
+  <div>
+    <%= link_to "New key", new_key_path %>
+  </div>
+<% end %>
+
 <%= will_paginate @keys %>
 
 <table id="keys">
@@ -13,6 +19,7 @@
     <th>Title</th>
     <th>Language</th>
     <th>Notes</th>
+    <th>XML</th>
     <th>Actions</th>
   </tr>
 
@@ -29,7 +36,7 @@
       </td>
 
       <td>
-        <%= link_to key.document.ref, document_path(key.document) %>
+        <%= link_to(key.document.ref, document_path(key.document)) if key.document %>
       </td>
 
       <td>
@@ -45,7 +52,14 @@
       </td>
 
       <td>
+        <pre><%= key.xml %></pre>
+      </td>
+
+      <td>
         <%= link_to "Show", key_path(key) %>
+        <% if admin_signed_in? %>
+          <%= link_to "Delete", key_path(key, :delete => 1) %>
+        <% end %>
       </td>
 
     </tr>

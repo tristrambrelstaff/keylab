@@ -1,0 +1,22 @@
+<%= form_with(model: key) do |form| %>
+  <% if key.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(key.errors.count, "error") %> prohibited this key from being saved:</h2>
+
+      <ul>
+        <% key.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :xml, "XML", style: "display: block" %>
+    <%= form.text_area :xml %>
+  </div>
+
+  <div class="submit-field">
+    <%= form.submit "Upload" %>
+  </div>
+<% end %>

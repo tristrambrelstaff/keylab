@@ -2,7 +2,16 @@ class Key < ApplicationRecord
 
   require "empty_where_fix"
 
-  belongs_to :document
+  belongs_to :document, optional: true  # Just temporarily optional
+
+  before_save :read_from_xml
+
+  def read_from_xml
+    reader = Nokogiri::XML::Reader.from_memory(xml)
+    reader.each do |node|
+      puts "#{node.depth}  #{node.name}:#{node.node_type}"
+    end
+  end
 
   def Key.searcher(params)
     joins = []

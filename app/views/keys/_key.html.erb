@@ -6,7 +6,7 @@
 
   <p>
     <strong>Document:</strong>
-    <%= key.document.ref %>
+    <%= key.document.ref if key.document %>
   </p>
 
   <p>
@@ -22,6 +22,11 @@
   <p>
     <strong>Notes:</strong>
     <%= key.notes %>
+  </p>
+
+  <p>
+    <strong>XML:</strong>
+    <pre><%= key.xml %></pre>
   </p>
 
 </div>
