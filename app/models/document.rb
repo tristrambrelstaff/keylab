@@ -4,13 +4,18 @@ class Document < ApplicationRecord
 
   has_many :keys, dependent: :destroy
 
-  before_save :read_from_xml
-
-  def read_from_xml
-    reader = Nokogiri::XML::Reader.from_memory(xml)
-    reader.each do |node|
-      puts "#{node.depth}  #{node.name}:#{node.node_type}"
+  def xml=(str)
+    begin
+      xml_doc = Nokogiri::XML::Document.parse(str) {|options| options.noblanks.strict}
+    rescue Nokogiri::XML::SyntaxError => e
+      @error_message = e
     end
+  end
+
+  validate :no_xml_syntax_error
+
+  def no_xml_syntax_error
+    errors.add(:xml, "syntax error at line #{@error_message}") if @error_message
   end
 
   def Document.searcher(params)
