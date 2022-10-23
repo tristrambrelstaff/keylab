@@ -4,18 +4,24 @@ class Document < ApplicationRecord
 
   has_many :keys, dependent: :destroy
 
-  def xml=(str)
+  validate :no_xml_syntax_error
+
+  def no_xml_syntax_error
+    errors.add(:xml, "syntax error at line #{@error_message}") if @error_message
+  end
+
+  def xml=(uploaded_file)
+    super(File.read(uploaded_file.to_path))
     begin
-      xml_doc = Nokogiri::XML::Document.parse(str) {|options| options.noblanks.strict}
+      xml_doc = Nokogiri::XML::Document.parse(xml) {|options| options.noblanks.strict}
+      read_from_xml_doc(xml_doc)
     rescue Nokogiri::XML::SyntaxError => e
       @error_message = e
     end
   end
 
-  validate :no_xml_syntax_error
-
-  def no_xml_syntax_error
-    errors.add(:xml, "syntax error at line #{@error_message}") if @error_message
+  def read_from_xml_doc(xml_doc)
+    ### TODO ###
   end
 
   def Document.searcher(params)
