@@ -13,15 +13,18 @@ class Document < ApplicationRecord
   def xml=(uploaded_file)
     super(File.read(uploaded_file.to_path))
     begin
-      xml_doc = Nokogiri::XML::Document.parse(xml) {|options| options.noblanks.strict}
-      read_from_xml_doc(xml_doc)
+      read_doc(Nokogiri::XML::Document.parse(xml) {|options| options.noblanks.strict}.root)
     rescue Nokogiri::XML::SyntaxError => e
       @error_message = e
     end
   end
 
-  def read_from_xml_doc(xml_doc)
-    ### TODO ###
+  def read_doc(node)
+    if node.name == "doc"
+      ### TODO ###
+    else
+      @error_message = "#{node.line}: expecting <doc> but found <#{node.name}>"
+    end
   end
 
   def Document.searcher(params)
