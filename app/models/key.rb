@@ -4,10 +4,17 @@ class Key < ApplicationRecord
 
   belongs_to :document, optional: true  # Just temporarily optional
 
-  validate :no_xml_syntax_error
+  def initialize(params)
+    @xml_errors = []
+    super(params)
+  end
 
-  def no_xml_syntax_error
-    errors.add(:xml, "syntax error at line #{@error_message}") if @error_message
+  validate :no_xml_errors
+
+  def no_xml_errors
+    @xml_errors.each do |xml_error|
+      errors.add(:xml, "error: #{xml_error}")
+    end
   end
 
   def xml=(uploaded_file)
@@ -15,7 +22,7 @@ class Key < ApplicationRecord
     begin
       read_key(Nokogiri::XML::Document.parse(xml) {|options| options.noblanks.strict}.root)
     rescue Nokogiri::XML::SyntaxError => e
-      @error_message = e
+      @xml_errors << "invalid character (probably an unescaped < or &) at line #{e}"
     end
   end
 
@@ -23,7 +30,7 @@ class Key < ApplicationRecord
     if node.name == "key"
       ### TODO ###
     else
-      @error_message = "#{node.line}: expecting <key> but found <#{node.name}>"
+      @xml_errors << "expecting <key> but found <#{node.name}> at line #{node.line}"
     end
   end
 
