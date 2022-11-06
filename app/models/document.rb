@@ -27,7 +27,6 @@ class Document < ApplicationRecord
   end
 
   def read_doc(node)
-    return if errors.any?
     if node.name == "doc"
       ### TODO ###
     else
